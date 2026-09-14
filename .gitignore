@@ -1,0 +1,11 @@
+﻿venv/
+__pycache__/
+*.pyc
+ml/data/*_raw/
+ml/data/*.csv
+ml/models/*.pt
+ml/models/*.txt
+backend/models/*.pt
+backend/models/*.txt
+results/*.png
+.DS_Store
