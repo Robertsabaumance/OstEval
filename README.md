@@ -40,7 +40,7 @@ chance:
 ![FracAtlas train/validation/test split diagram](docs/images/fracatlas-split.svg)
 
 See the script's docstring for the full reasoning, including why the dataset's
-own provided split wasn't used, and exact steps to reproduce the download.
+own provided split wasn't used, and exact steps to reproduce the download. This practice (stratification) is repeated/followed in the data preparation scripts for the Osteoarthritis and Osteoporosis datasets.
 
 ## What's excluded from version control (.gitignore)
 
