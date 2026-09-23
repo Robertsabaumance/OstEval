@@ -115,20 +115,32 @@ def main():
     # body-part-aware routing in the app.
     clean_df = df[["image_path", "fractured"]]
 
-    # Split 70% train, 15% val, 15% test. stratify= keeps the fracture rate
-    # consistent across all three splits, matching the full dataset's ~17.6%.
+    # First, keep 70% for training and place the remaining 30% in temp_df.
+    # test_size=0.30 means 30% goes to the second output, temp_df.
+    # stratify= keeps the fracture rate consistent in both groups.
     train_df, temp_df = train_test_split(
         clean_df, test_size=0.30, stratify=clean_df["fractured"], random_state=42
     )
+
+    # Split the temporary 30% equally into validation and test sets.
+    # test_size=0.50 sends half of temp_df to test_df and the other half to val_df,
+    # giving 15% validation and 15% test of the original dataset.
+    # Stratifying again preserves the ~17.6% fracture rate in both sets.
     val_df, test_df = train_test_split(
         temp_df, test_size=0.50, stratify=temp_df["fractured"], random_state=42
     )
 
+    # Save each split as a CSV file. index=False prevents pandas from adding
+    # an extra column containing the DataFrame row numbers.
     train_df.to_csv(OUTPUT_TRAIN, index=False)
     val_df.to_csv(OUTPUT_VAL, index=False)
     test_df.to_csv(OUTPUT_TEST, index=False)
 
+    # Report how many images are in each split.
     print(f"Train: {len(train_df)} | Val: {len(val_df)} | Test: {len(test_df)}")
+
+    # The mean of the 0/1 fractured column is the proportion of fractured images
+    # in each split. For example, 0.176 means approximately 17.6% are fractured.
     print("Train fracture rate:", train_df["fractured"].mean())
     print("Val fracture rate:", val_df["fractured"].mean())
     print("Test fracture rate:", test_df["fractured"].mean())
