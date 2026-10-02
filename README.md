@@ -31,16 +31,20 @@ script's docstring.
 
 ## Data preparation
 
-`ml/data/prepare_fracture.py` builds the labeled train/validation/test split for
-the fracture dataset (FracAtlas). The dataset is imbalanced — only 17.6% of
-images show a fracture — so the split is stratified, meaning each of the three
-groups preserves that same ~17.6% ratio rather than risking an uneven split by
-chance:
+Each disease has its own data preparation script under `ml/data/`, which downloads
+the labeled dataset and builds a stratified train/validation/test split — keeping
+each class's proportion consistent across all three groups rather than risking an
+uneven split by chance:
 
+- `prepare_fracture.py` — FracAtlas, fracture detection (imbalanced: ~17.6% fractured)
+- `prepare_oa.py` — SilpaCS/kneeosteoarthritis, osteoarthritis grading 0-4 on the Kellgren-Lawrence scale (imbalanced: Grade 4 only ~3% of the dataset)
+- `prepare_osteoporosis.py` — Multi-Class Knee Osteoporosis X-Ray Dataset, osteoporosis classification (imbalanced: Osteopenia only ~19% of the dataset)
+
+Example diagram for the FracAtlas dataset split:
 ![FracAtlas train/validation/test split diagram](docs/images/fracatlas-split.svg)
 
-See the script's docstring for the full reasoning, including why the dataset's
-own provided split wasn't used, and exact steps to reproduce the download. This practice (stratification) is repeated/followed in the data preparation scripts for the Osteoarthritis and Osteoporosis datasets.
+See each script's docstring for full reasoning — dataset sourcing decisions,
+class balance, and exact steps to reproduce the download.
 
 ## What's excluded from version control (.gitignore)
 
