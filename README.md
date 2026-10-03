@@ -41,7 +41,7 @@ uneven split by chance:
 - `prepare_osteoporosis.py` — Multi-Class Knee Osteoporosis X-Ray Dataset, osteoporosis classification (imbalanced: Osteopenia only ~19% of the dataset)
 
 Example diagram for the FracAtlas dataset split:
-[FracAtlas train/validation/test split diagram](docs/images/fracatlas-split.svg)
+![FracAtlas train/validation/test split diagram](docs/images/fracatlas-split.svg)
 
 See each script's docstring for full reasoning — dataset sourcing decisions,
 class balance, and exact steps to reproduce the download.
@@ -54,7 +54,7 @@ and image cleanup). This reflects the intended design — the backend and
 frontend are not yet built; data preparation for the three disease models is
 complete, and training is in progress.
 
-![OstEval app flow mockup](docs/images/app-flow-mockup.png)
+[OstEval app flow mockup](docs/images/app-flow-mockup.png)
 
 ## What's excluded from version control (.gitignore)
 
