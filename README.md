@@ -46,6 +46,16 @@ Example diagram for the FracAtlas dataset split:
 See each script's docstring for full reasoning — dataset sourcing decisions,
 class balance, and exact steps to reproduce the download.
 
+## Planned app flow
+
+Mockups of the upload page, results page, and the backend process that runs
+behind them (body-part routing, model inference, Grad-CAM explainability,
+and image cleanup). This reflects the intended design — the backend and
+frontend are not yet built; data preparation for the three disease models is
+complete, and training is in progress.
+
+![OstEval app flow mockup](docs/images/app-flow-mockup.png)
+
 ## What's excluded from version control (.gitignore)
 
 - `venv/` — the virtual environment, large and reproducible from requirements.txt
